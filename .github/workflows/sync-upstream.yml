@@ -248,7 +248,7 @@ jobs:
       - name: Health check
         if: steps.check.outputs.needed == 'true'
         run: |
-          URL="https://sub-store-workers.${{ secrets.WORKERS_SUBDOMAIN }}.workers.dev"
+          URL="https://sub-store-workers.${{ secrets.WORKERS_SUBDOMAIN }}.workers.dev/${{ secrets.SUB_STORE_PASSWORD_VALUE }}"
           for i in 1 2 3; do
             sleep 10
             CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL/")
